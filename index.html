@@ -335,13 +335,15 @@
                     { en: "Extrusion Inventory", cn: "押出盤點", url: "https://chiehs1429.github.io/Extrusion_app/", icon: "fa-layer-group" },
                     { en: "Calendering Inventory", cn: "上膠盤點", url: "https://chiehs1429.github.io/Calendering/", icon: "fa-scroll" },
                     { en: "CUTTING Inventory", cn: "裁斷盤點", url: "https://chiehs1429.github.io/CUTTING-Inventory/", icon: "fa-cut" },
-                    { en: "RW WH Inventory", cn: "原物料倉庫", url: "https://chiehs1429.github.io/RM-WH-Inventory/", icon: "fa-warehouse" }
+                    { en: "RW WH Inventory", cn: "原物料倉庫", url: "https://chiehs1429.github.io/RM-WH-Inventory/", icon: "fa-warehouse" },
+                    { en: "PONE QR Code", cn: "手機掃描盤點", url: "https://dereklin1429.github.io/PONE-QRCOED/", icon: "fa-qrcode" }
                 ]
             }
         ];
 
         let appData = [];
-        const STORAGE_KEY = 'departmentalAppButtonsV10_Admin';
+        // 更新 STORAGE_KEY 以強制載入新按鈕，避免讀取舊緩存
+        const STORAGE_KEY = 'departmentalAppButtonsV11_Admin';
 
         function loadData() {
             const saved = localStorage.getItem(STORAGE_KEY);
