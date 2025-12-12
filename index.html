@@ -111,7 +111,7 @@
         .color-group-0 { background: linear-gradient(to bottom, #FF8C00, #FF7F00); box-shadow: 0 3px 0 #D46900; }
         .color-group-0:active { box-shadow: none; }
 
-        /* 第二組顏色 (藍色) */
+        /* 第二組顏色 (藍色) - 庫存盤點現在用這個顏色 */
         .color-group-1 { background: linear-gradient(to bottom, #2196F3, #1976D2); box-shadow: 0 3px 0 #0D47A1; }
         .color-group-1:active { box-shadow: none; }
 
@@ -251,10 +251,10 @@
                 <label>選擇群組</label>
                 <select id="new-group-select">
                     <option value="0">第一組 (機械故障訊息)</option>
-                    <option value="1">第二組 (5S查核)</option>
-                    <option value="2">第三組 (保養查核)</option>
-                    <option value="3">第四組 (維修紀錄)</option>
-                    <option value="4">第五組 (庫存盤點)</option>
+                    <option value="1">第二組 (庫存盤點)</option>
+                    <option value="2">第三組 (5S查核)</option>
+                    <option value="3">第四組 (保養查核)</option>
+                    <option value="4">第五組 (維修紀錄)</option>
                 </select>
                 
                 <input type="text" id="new-en" placeholder="英文名稱 (必填)" style="width:100%; padding:8px; margin-bottom:8px; box-sizing:border-box;">
@@ -290,7 +290,7 @@
         const ADMIN_PASSWORD = "88888888"; // 【後台密碼】進入設定用 (預設 88888888)
 
         // --------------------------------------------------------
-        // 資料結構 (分組)
+        // 資料結構 (分組) - 已重新排序
         // --------------------------------------------------------
         const defaultData = [
             {
@@ -300,6 +300,17 @@
                     { en: "Machine NG CL", cn: "上膠故障訊息", url: "https://dereklin1429.github.io/Machine-NG-CL/", icon: "fa-exclamation-triangle" },
                     { en: "Machine NG EX", cn: "押出故障訊息", url: "https://dereklin1429.github.io/Machine-NG-EX/", icon: "fa-exclamation-triangle" },
                     { en: "Machine NG CT", cn: "裁斷故障訊息", url: "https://dereklin1429.github.io/Machine-NG-CT/", icon: "fa-exclamation-triangle" }
+                ]
+            },
+            {
+                title: "庫存盤點 (Inventory)",
+                items: [
+                    { en: "Mixing Inventory", cn: "混練盤點", url: "https://chiehs1429.github.io/Mixing/", icon: "fa-cubes" },
+                    { en: "Extrusion Inventory", cn: "押出盤點", url: "https://chiehs1429.github.io/Extrusion_app/", icon: "fa-layer-group" },
+                    { en: "Calendering Inventory", cn: "上膠盤點", url: "https://chiehs1429.github.io/Calendering/", icon: "fa-scroll" },
+                    { en: "CUTTING Inventory", cn: "裁斷盤點", url: "https://chiehs1429.github.io/CUTTING-Inventory/", icon: "fa-cut" },
+                    { en: "RW WH Inventory", cn: "原物料倉庫", url: "https://chiehs1429.github.io/RM-WH-Inventory/", icon: "fa-warehouse" },
+                    { en: "PONE QR Code", cn: "手機掃描盤點", url: "https://dereklin1429.github.io/PONE-QRCOED/", icon: "fa-qrcode" }
                 ]
             },
             {
@@ -327,23 +338,12 @@
                 items: [
                     { en: "MX Repair History", cn: "混練維修紀錄", url: "https://dereklin1429.github.io/Repair-History-MX/", icon: "fa-tools" }
                 ]
-            },
-            {
-                title: "庫存盤點 (Inventory)",
-                items: [
-                    { en: "Mixing Inventory", cn: "混練盤點", url: "https://chiehs1429.github.io/Mixing/", icon: "fa-cubes" },
-                    { en: "Extrusion Inventory", cn: "押出盤點", url: "https://chiehs1429.github.io/Extrusion_app/", icon: "fa-layer-group" },
-                    { en: "Calendering Inventory", cn: "上膠盤點", url: "https://chiehs1429.github.io/Calendering/", icon: "fa-scroll" },
-                    { en: "CUTTING Inventory", cn: "裁斷盤點", url: "https://chiehs1429.github.io/CUTTING-Inventory/", icon: "fa-cut" },
-                    { en: "RW WH Inventory", cn: "原物料倉庫", url: "https://chiehs1429.github.io/RM-WH-Inventory/", icon: "fa-warehouse" },
-                    { en: "PONE QR Code", cn: "QRCOED生成", url: "https://dereklin1429.github.io/PONE-QRCOED/", icon: "fa-qrcode" }
-                ]
             }
         ];
 
         let appData = [];
-        // 更新 STORAGE_KEY 以強制載入新按鈕，避免讀取舊緩存
-        const STORAGE_KEY = 'departmentalAppButtonsV11_Admin';
+        // 更新 STORAGE_KEY 以強制載入新順序
+        const STORAGE_KEY = 'departmentalAppButtonsV12_Admin';
 
         function loadData() {
             const saved = localStorage.getItem(STORAGE_KEY);
@@ -555,4 +555,3 @@
     </script>
 </body>
 </html>
-
