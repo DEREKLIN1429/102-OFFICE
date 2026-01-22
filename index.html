@@ -25,7 +25,7 @@
             text-align: center;
             margin-bottom: 10px;
             width: 100%;
-            max-width: 720px; /* 手機版預設寬度 */
+            max-width: 720px; 
         }
 
         h1 { color: #333; margin: 0; font-size: 24px; text-shadow: 1px 1px 2px rgba(255,255,255,0.3); }
@@ -36,7 +36,7 @@
         /* ---------------------------------- */
         .group-container {
             width: 100%;
-            max-width: 720px; /* 手機版預設寬度 */
+            max-width: 720px; 
             margin-bottom: 20px;
         }
 
@@ -55,7 +55,7 @@
         .button-grid {
             display: flex;
             flex-wrap: wrap; 
-            gap: 10px; /* 間隔設定為 10px */
+            gap: 10px; 
             justify-content: flex-start; 
             padding: 0 5px;
         }
@@ -64,8 +64,6 @@
         /* 3. 按鈕樣式 (依顏色分組) */
         /* ---------------------------------- */
         .btn-style {
-            /* 手機版：一排 3 個 (維持不動) */
-            /* (100% - 2個間隔20px) / 3 */
             width: calc((100% - 20px) / 3); 
             height: 120px; 
             text-decoration: none; 
@@ -98,7 +96,6 @@
             word-break: break-word;
         }
 
-        /* 鎖頭圖示 */
         .lock-indicator {
             position: absolute;
             top: 5px;
@@ -107,65 +104,30 @@
             color: rgba(255,255,255,0.8);
         }
 
-        /* 第一組顏色 (橘色) */
         .color-group-0 { background: linear-gradient(to bottom, #FF8C00, #FF7F00); box-shadow: 0 3px 0 #D46900; }
-        .color-group-0:active { box-shadow: none; }
-
-        /* 第二組顏色 (藍色) */
         .color-group-1 { background: linear-gradient(to bottom, #2196F3, #1976D2); box-shadow: 0 3px 0 #0D47A1; }
-        .color-group-1:active { box-shadow: none; }
-
-        /* 第三組顏色 (綠色) */
         .color-group-2 { background: linear-gradient(to bottom, #4CAF50, #388E3C); box-shadow: 0 3px 0 #1B5E20; }
-        .color-group-2:active { box-shadow: none; }
-
-        /* 第四組顏色 (紫色) */
         .color-group-3 { background: linear-gradient(to bottom, #9C27B0, #7B1FA2); box-shadow: 0 3px 0 #4A148C; }
-        .color-group-3:active { box-shadow: none; }
-
-        /* 第五組顏色 (紅色) */
         .color-group-4 { background: linear-gradient(to bottom, #F44336, #D32F2F); box-shadow: 0 3px 0 #B71C1C; }
-        .color-group-4:active { box-shadow: none; }
-
-        /* 第六組顏色 (青色) - 新增區塊使用此顏色 */
         .color-group-5 { background: linear-gradient(to bottom, #00BCD4, #0097A7); box-shadow: 0 3px 0 #006064; }
-        .color-group-5:active { box-shadow: none; }
 
-
-        /* ---------------------------------- */
-        /* 4. 電腦版調整 */
-        /* ---------------------------------- */
         @media (min-width: 769px) {
-            /* 放寬電腦版的容器寬度，讓5個按鈕排得下 */
-            .header-container, .group-container {
-                max-width: 1200px;
-            }
-
-            .btn-style {
-                /* 計算公式：(100% 寬度 - 4個間隔共40px) / 5個按鈕 */
-                width: calc((100% - 40px) / 5);
-                height: 180px;
-                /* 移除原本的 margin，統一交給 gap 控制 */
-                margin-right: 0; 
-                margin-bottom: 0;
-            }
-            
+            .header-container, .group-container { max-width: 1200px; }
+            .btn-style { width: calc((100% - 40px) / 5); height: 180px; }
             .btn-icon { font-size: 60px; margin-bottom: 15px; }
             .btn-text { font-size: 18px; }
             .lock-indicator { top: 10px; right: 10px; font-size: 16px; }
         }
 
         /* ---------------------------------- */
-        /* 5. 設定按鈕與 Modal */
+        /* 4. 後台管理 Modal */
         /* ---------------------------------- */
         #settings-btn {
             position: fixed; bottom: 20px; right: 20px;
             width: 50px; height: 50px; border-radius: 50%;
-            background-color: #333; 
-            color: white; border: 2px solid #fff;
+            background-color: #333; color: white; border: 2px solid #fff;
             box-shadow: 0 4px 8px rgba(0,0,0,0.4); z-index: 100;
-            font-size: 24px; cursor: pointer;
-            transition: transform 0.2s;
+            font-size: 24px; cursor: pointer; transition: transform 0.2s;
         }
         #settings-btn:hover { transform: scale(1.1); }
 
@@ -182,8 +144,7 @@
 
         .setting-group-header {
             padding: 10px; font-weight: bold; margin-top: 20px; 
-            border-radius: 4px; color: white; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            border-radius: 4px; color: white; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
         }
 
         .header-style-0 { background-color: #FF8C00; } 
@@ -196,14 +157,11 @@
         .setting-item {
             border: 1px solid #ddd; padding: 10px;
             margin-bottom: 10px; border-radius: 5px;
-            background-color: #fff;
-            display: flex; flex-direction: column; gap: 8px;
+            background-color: #fff; display: flex; flex-direction: column; gap: 8px;
         }
 
-        .setting-item label { font-size: 12px; color: #666; margin-bottom: -5px; }
         .setting-item input[type="text"] {
-            padding: 8px; border: 1px solid #ccc; border-radius: 4px;
-            width: 100%; box-sizing: border-box;
+            padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 100%; box-sizing: border-box;
         }
 
         .item-actions { display: flex; gap: 10px; margin-top: 5px; }
@@ -219,13 +177,9 @@
         #close-modal-btn { background-color: #666; color: white; padding: 12px; border: none; border-radius: 4px; width: 100%; font-size: 16px; cursor: pointer;}
         #reset-btn { background-color: #999; color: white; padding: 12px; border: none; border-radius: 4px; width: 100%; cursor: pointer;}
 
-        .add-form {
-            background: #f9f9f9; padding: 15px; border: 1px solid #ddd;
-            border-radius: 8px; margin-bottom: 20px;
-        }
+        .add-form { background: #f9f9f9; padding: 15px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 20px; }
         .add-form select { width: 100%; padding: 8px; margin-bottom: 10px; }
         .add-btn { width: 100%; background-color: #4CAF50; color: white; padding: 10px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer;}
-
     </style>
 </head>
 <body>
@@ -257,44 +211,31 @@
                     <option value="4">第五組 (維修紀錄)</option>
                     <option value="5">第六組 (圖表分析)</option>
                 </select>
-                
-                <input type="text" id="new-en" placeholder="英文名稱 (必填)" style="width:100%; padding:8px; margin-bottom:8px; box-sizing:border-box;">
-                <input type="text" id="new-cn" placeholder="中文名稱 (選填)" style="width:100%; padding:8px; margin-bottom:8px; box-sizing:border-box;">
-                <input type="text" id="new-url" placeholder="網址 (https://...)" style="width:100%; padding:8px; margin-bottom:8px; box-sizing:border-box;">
-                <input type="text" id="new-pwd" placeholder="個別連結密碼 (選填)" style="width:100%; padding:8px; margin-bottom:8px; box-sizing:border-box; border: 1px solid #ffa500;">
-                
+                <input type="text" id="new-en" placeholder="英文名稱 (必填)">
+                <input type="text" id="new-cn" placeholder="中文名稱 (選填)">
+                <input type="text" id="new-url" placeholder="網址 (https://...)">
+                <input type="text" id="new-pwd" placeholder="個別連結密碼 (選填)" style="border: 1px solid #ffa500;">
                 <button class="add-btn" onclick="addNewButton()">
                     <i class="fas fa-plus"></i> 新增至列表
                 </button>
             </div>
 
             <hr>
-            
             <h3>編輯現有項目</h3>
             <div id="settings-list"></div>
             
             <div class="modal-footer">
-                <button id="close-modal-btn" onclick="closeModal()">
-                    <i class="fas fa-check"></i> 完成並關閉
-                </button>
-                <button id="reset-btn" onclick="resetToDefault()">
-                    <i class="fas fa-undo"></i> 重置所有設定為預設值
-                </button>
+                <button id="close-modal-btn" onclick="closeModal()">完成並關閉</button>
+                <button id="reset-btn" onclick="resetToDefault()">重置所有設定為預設值</button>
             </div>
         </div>
     </div>
 
     <script>
-        // --------------------------------------------------------
-        // 設定區
-        // --------------------------------------------------------
-        const ADMIN_PASSWORD = "88888888"; // 【後台密碼】進入設定用 (預設 88888888)
+        const ADMIN_PASSWORD = "88888888"; 
+        const STORAGE_KEY = 'departmentalAppButtonsV14_Admin'; // 更新版本號以載入新資料
 
-        // --------------------------------------------------------
-        // 資料結構 (分組)
-        // --------------------------------------------------------
         const defaultData = [
-            // Group 0
             {
                 title: "機械故障訊息 (Machine NG INFO)",
                 items: [
@@ -304,7 +245,6 @@
                     { en: "Machine NG CT", cn: "裁斷故障訊息", url: "https://dereklin1429.github.io/Machine-NG-CT/", icon: "fa-exclamation-triangle" }
                 ]
             },
-            // Group 1
             {
                 title: "庫存盤點 (Inventory)",
                 items: [
@@ -316,7 +256,6 @@
                     { en: "PONE QR Code", cn: "QRCode 生成", url: "https://dereklin1429.github.io/derekqrcoed01/", icon: "fa-qrcode" }
                 ]
             },
-            // Group 2
             {
                 title: "5S查核 (5S-audit)",
                 items: [
@@ -327,7 +266,6 @@
                     { en: "5S audit WH", cn: "倉庫5S稽核", url: "https://dereklin1429.github.io/5S-audit-WH/", icon: "fa-tasks" }
                 ]
             },
-            // Group 3
             {
                 title: "保養查核 (Maintenance)",
                 items: [
@@ -338,26 +276,22 @@
                     { en: "Container MM Info", cn: "貨櫃管理資訊", url: "https://dereklin1429.github.io/Vehicle-Management/", icon: "fa-truck" }
                 ]
             },
-            // Group 4
             {
                 title: "一二三級保養紀錄 (Level 123 History)",
                 items: [
                     { en: "MX 123 History", cn: "混練一二三級保養", url: "https://dereklin1429.github.io/Repair-History-MX/", icon: "fa-tools" }
                 ]
             },
-            // Group 5 (New Added)
             {
                 title: "圖表分析 (Chart Analysis)",
                 items: [
-                    // 因為尚未提供新網址，先使用 # 替代
-                    { en: "Car Live Status", cn: "車輛動態管理", url: "https://dereklin1429.github.io/Intelligent-Container-Logistics-Dashboard-v5/", icon: "fa-chart-line" }
+                    { en: "Car Live Status", cn: "車輛動態管理", url: "https://dereklin1429.github.io/Intelligent-Container-Logistics-Dashboard-v5/", icon: "fa-chart-line" },
+                    { en: "Procurement List", cn: "採購清單彙整", url: "https://dereklin1429.github.io/Procurement-List-02/", icon: "fa-file-invoice-dollar" }
                 ]
             }
         ];
 
         let appData = [];
-        // 更新 STORAGE_KEY 以強制載入新順序 (V13)
-        const STORAGE_KEY = 'departmentalAppButtonsV13_Admin';
 
         function loadData() {
             const saved = localStorage.getItem(STORAGE_KEY);
@@ -370,59 +304,37 @@
             renderMain();
         }
 
-        function saveData() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
-        }
+        function saveData() { localStorage.setItem(STORAGE_KEY, JSON.stringify(appData)); }
 
         function renderMain() {
             const container = document.getElementById('main-container');
             container.innerHTML = '';
-
             appData.forEach((group, groupIndex) => {
                 const groupDiv = document.createElement('div');
                 groupDiv.className = 'group-container';
-                
-                const title = document.createElement('div');
-                title.className = 'group-title';
-                title.textContent = group.title;
-                groupDiv.appendChild(title);
-
+                groupDiv.innerHTML = `<div class="group-title">${group.title}</div>`;
                 const grid = document.createElement('div');
                 grid.className = 'button-grid';
 
                 group.items.forEach(btn => {
-                    let nameToDisplay = btn.en;
-                    if (btn.cn && btn.cn.trim() !== '') {
-                        nameToDisplay += `<br>(${btn.cn.trim()})`;
-                    }
-
+                    let name = btn.en + (btn.cn ? `<br>(${btn.cn})` : '');
                     const link = document.createElement('a');
                     link.className = `btn-style color-group-${groupIndex}`;
                     link.href = btn.url;
-                    
-                    if (btn.password && btn.password.trim() !== "") {
-                        link.innerHTML += `<i class="fas fa-lock lock-indicator"></i>`;
-                        link.onclick = function(e) {
+                    if (btn.password) {
+                        link.innerHTML = `<i class="fas fa-lock lock-indicator"></i>`;
+                        link.onclick = (e) => {
                             e.preventDefault();
-                            const input = prompt("🔒 此頁面受保護，請輸入密碼：");
-                            if (input === btn.password) {
-                                window.open(btn.url, '_blank');
-                            } else {
-                                if(input !== null) alert("❌ 密碼錯誤！");
-                            }
+                            if (prompt("🔒 請輸入密碼：") === btn.password) window.open(btn.url, '_blank');
+                            else alert("❌ 密碼錯誤！");
                         };
                     } else {
                         link.target = '_blank';
                         link.rel = 'noopener noreferrer';
                     }
-
-                    link.innerHTML += `
-                        <i class="fas ${btn.icon || 'fa-external-link-alt'} btn-icon"></i>
-                        <span class="btn-text">${nameToDisplay}</span>
-                    `;
+                    link.innerHTML += `<i class="fas ${btn.icon || 'fa-link'} btn-icon"></i><span class="btn-text">${name}</span>`;
                     grid.appendChild(link);
                 });
-
                 groupDiv.appendChild(grid);
                 container.appendChild(groupDiv);
             });
@@ -431,146 +343,63 @@
         function renderSettingsList() {
             const list = document.getElementById('settings-list');
             list.innerHTML = '';
-
-            appData.forEach((group, groupIndex) => {
+            appData.forEach((group, gIdx) => {
                 const header = document.createElement('div');
-                header.className = `setting-group-header header-style-${groupIndex}`;
+                header.className = `setting-group-header header-style-${gIdx}`;
                 header.textContent = group.title;
                 list.appendChild(header);
-
-                group.items.forEach((item, itemIndex) => {
+                group.items.forEach((item, iIdx) => {
                     const div = document.createElement('div');
                     div.className = 'setting-item';
-                    
                     div.innerHTML = `
-                        <label>英文名稱</label>
-                        <input type="text" value="${item.en}" id="input-en-${groupIndex}-${itemIndex}">
-                        
-                        <label>中文名稱</label>
-                        <input type="text" value="${item.cn}" id="input-cn-${groupIndex}-${itemIndex}">
-                        
-                        <label>網址</label>
-                        <input type="text" value="${item.url}" id="input-url-${groupIndex}-${itemIndex}">
-                        
-                        <label>連結密碼 (選填)</label>
-                        <input type="text" value="${item.password || ''}" id="input-pwd-${groupIndex}-${itemIndex}" placeholder="輸入密碼則鎖定連結">
-
+                        <input type="text" value="${item.en}" id="en-${gIdx}-${iIdx}">
+                        <input type="text" value="${item.cn}" id="cn-${gIdx}-${iIdx}">
+                        <input type="text" value="${item.url}" id="url-${gIdx}-${iIdx}">
+                        <input type="text" value="${item.password || ''}" id="pwd-${gIdx}-${iIdx}" placeholder="密碼 (選填)">
                         <div class="item-actions">
-                            <button class="action-btn save-btn" onclick="saveSingleItem(${groupIndex}, ${itemIndex})">
-                                <i class="fas fa-save"></i> 儲存
-                            </button>
-                            <button class="action-btn delete-btn" onclick="deleteItem(${groupIndex}, ${itemIndex})">
-                                <i class="fas fa-trash-alt"></i> 刪除
-                            </button>
-                        </div>
-                    `;
+                            <button class="action-btn save-btn" onclick="saveItem(${gIdx}, ${iIdx})">儲存</button>
+                            <button class="action-btn delete-btn" onclick="deleteItem(${gIdx}, ${iIdx})">刪除</button>
+                        </div>`;
                     list.appendChild(div);
                 });
             });
         }
 
-        function saveSingleItem(gIndex, iIndex) {
-            const en = document.getElementById(`input-en-${gIndex}-${iIndex}`).value.trim();
-            const cn = document.getElementById(`input-cn-${gIndex}-${iIndex}`).value.trim();
-            const url = document.getElementById(`input-url-${gIndex}-${iIndex}`).value.trim();
-            const pwd = document.getElementById(`input-pwd-${gIndex}-${iIndex}`).value.trim();
-
-            if(!en || !url) {
-                alert("英文名稱與網址不能為空！");
-                return;
-            }
-
-            appData[gIndex].items[iIndex].en = en;
-            appData[gIndex].items[iIndex].cn = cn;
-            appData[gIndex].items[iIndex].url = url;
-            appData[gIndex].items[iIndex].password = pwd;
-
-            saveData();
-            renderMain();
-            alert("已儲存變更！");
+        function saveItem(g, i) {
+            appData[g].items[i].en = document.getElementById(`en-${g}-${i}`).value;
+            appData[g].items[i].cn = document.getElementById(`cn-${g}-${i}`).value;
+            appData[g].items[i].url = document.getElementById(`url-${g}-${i}`).value;
+            appData[g].items[i].password = document.getElementById(`pwd-${g}-${i}`).value;
+            saveData(); renderMain(); alert("已儲存！");
         }
 
-        function deleteItem(gIndex, iIndex) {
-            const target = appData[gIndex].items[iIndex];
-            if(confirm(`確定要刪除 "${target.en}" 嗎？`)) {
-                appData[gIndex].items.splice(iIndex, 1);
-                saveData();
-                renderMain();
-                renderSettingsList();
-            }
+        function deleteItem(g, i) {
+            if(confirm("確定刪除？")) { appData[g].items.splice(i, 1); saveData(); renderMain(); renderSettingsList(); }
         }
 
         function addNewButton() {
-            const gIndex = document.getElementById('new-group-select').value;
-            const en = document.getElementById('new-en').value.trim();
-            const cn = document.getElementById('new-cn').value.trim();
-            const url = document.getElementById('new-url').value.trim();
-            const pwd = document.getElementById('new-pwd').value.trim();
-
-            if (!en || !url) {
-                alert('英文名稱和網址連結為必填項。');
-                return;
-            }
-
-            const randomIcons = ["fa-arrow-right", "fa-star", "fa-circle", "fa-check"];
-            const icon = randomIcons[Math.floor(Math.random() * randomIcons.length)];
-
-            appData[gIndex].items.push({ en, cn, url, icon, password: pwd });
-            
-            saveData();
-            renderMain();
-            renderSettingsList();
-            
-            document.getElementById('new-en').value = '';
-            document.getElementById('new-cn').value = '';
-            document.getElementById('new-url').value = '';
-            document.getElementById('new-pwd').value = '';
-            alert("新增成功！");
+            const g = document.getElementById('new-group-select').value;
+            const en = document.getElementById('new-en').value;
+            const url = document.getElementById('new-url').value;
+            if(!en || !url) return alert("必填未填");
+            appData[g].items.push({ en, cn: document.getElementById('new-cn').value, url, icon: "fa-link", password: document.getElementById('new-pwd').value });
+            saveData(); renderMain(); renderSettingsList();
+            alert("新增成功");
         }
 
         function resetToDefault() {
-            if (confirm("⚠️ 警告：這將刪除所有修改，恢復為預設值。確定嗎？")) {
-                appData = JSON.parse(JSON.stringify(defaultData));
-                saveData();
-                renderMain();
-                renderSettingsList();
-                alert("已恢復預設值。");
-            }
+            if (confirm("確定恢復預設值？")) { appData = JSON.parse(JSON.stringify(defaultData)); saveData(); location.reload(); }
         }
-
-        const modal = document.getElementById('settingsModal');
 
         function checkAdminAndOpen() {
-            const input = prompt("🔐 請輸入管理員密碼以進入後台設定：");
-            if (input === ADMIN_PASSWORD) {
-                renderSettingsList();
-                modal.style.display = "block";
-                if (window.innerWidth <= 768) {
-                    const content = modal.querySelector('.modal-content');
-                    if(content) content.scrollTop = 0;
-                }
-            } else {
-                if (input !== null) {
-                    alert("⛔ 密碼錯誤！無法進入後台。");
-                }
-            }
+            if (prompt("🔐 管理員密碼：") === ADMIN_PASSWORD) { renderSettingsList(); document.getElementById('settingsModal').style.display = "block"; }
+            else alert("密碼錯誤");
         }
 
-        function closeModal() {
-            modal.style.display = "none";
-        }
-        
-        window.onclick = function(e) {
-            if(e.target == modal) closeModal();
-        }
+        function closeModal() { document.getElementById('settingsModal').style.display = "none"; }
+        window.onclick = (e) => { if(e.target == document.getElementById('settingsModal')) closeModal(); }
 
         loadData();
-
     </script>
 </body>
 </html>
-
-
-
-
-
