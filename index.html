@@ -233,7 +233,7 @@
 
     <script>
         const ADMIN_PASSWORD = "88888888"; 
-        const STORAGE_KEY = 'departmentalAppButtonsV14_Admin'; // 更新版本號以載入新資料
+        const STORAGE_KEY = 'departmentalAppButtonsV15_Admin'; // 更新版本號
 
         const defaultData = [
             {
@@ -285,6 +285,7 @@
             {
                 title: "圖表分析 (Chart Analysis)",
                 items: [
+                    { en: "Mixing schedule", cn: "混練生產排程系統", url: "https://luharaadil.github.io/Mixing-production-schedule-V2.0/", icon: "fa-calendar-alt" },
                     { en: "Car Live Status", cn: "車輛動態管理", url: "https://dereklin1429.github.io/Intelligent-Container-Logistics-Dashboard-v5/", icon: "fa-chart-line" },
                     { en: "Procurement List", cn: "採購清單彙整", url: "https://dereklin1429.github.io/Procurement-List-03/", icon: "fa-file-invoice-dollar" }
                 ]
@@ -321,6 +322,7 @@
                     const link = document.createElement('a');
                     link.className = `btn-style color-group-${groupIndex}`;
                     link.href = btn.url;
+                    
                     if (btn.password) {
                         link.innerHTML = `<i class="fas fa-lock lock-indicator"></i>`;
                         link.onclick = (e) => {
@@ -352,9 +354,9 @@
                     const div = document.createElement('div');
                     div.className = 'setting-item';
                     div.innerHTML = `
-                        <input type="text" value="${item.en}" id="en-${gIdx}-${iIdx}">
-                        <input type="text" value="${item.cn}" id="cn-${gIdx}-${iIdx}">
-                        <input type="text" value="${item.url}" id="url-${gIdx}-${iIdx}">
+                        <input type="text" value="${item.en}" id="en-${gIdx}-${iIdx}" placeholder="英文名稱">
+                        <input type="text" value="${item.cn || ''}" id="cn-${gIdx}-${iIdx}" placeholder="中文名稱">
+                        <input type="text" value="${item.url}" id="url-${gIdx}-${iIdx}" placeholder="網址">
                         <input type="text" value="${item.password || ''}" id="pwd-${gIdx}-${iIdx}" placeholder="密碼 (選填)">
                         <div class="item-actions">
                             <button class="action-btn save-btn" onclick="saveItem(${gIdx}, ${iIdx})">儲存</button>
@@ -381,18 +383,37 @@
             const g = document.getElementById('new-group-select').value;
             const en = document.getElementById('new-en').value;
             const url = document.getElementById('new-url').value;
-            if(!en || !url) return alert("必填未填");
-            appData[g].items.push({ en, cn: document.getElementById('new-cn').value, url, icon: "fa-link", password: document.getElementById('new-pwd').value });
+            if(!en || !url) return alert("英文名稱與網址為必填項目");
+            appData[g].items.push({ 
+                en: en, 
+                cn: document.getElementById('new-cn').value, 
+                url: url, 
+                icon: "fa-link", 
+                password: document.getElementById('new-pwd').value 
+            });
             saveData(); renderMain(); renderSettingsList();
+            
+            // 清空輸入框
+            document.getElementById('new-en').value = '';
+            document.getElementById('new-cn').value = '';
+            document.getElementById('new-url').value = '';
+            document.getElementById('new-pwd').value = '';
             alert("新增成功");
         }
 
         function resetToDefault() {
-            if (confirm("確定恢復預設值？")) { appData = JSON.parse(JSON.stringify(defaultData)); saveData(); location.reload(); }
+            if (confirm("確定恢復預設值？這將會覆蓋你所有的自定義修改。")) { 
+                appData = JSON.parse(JSON.stringify(defaultData)); 
+                saveData(); 
+                location.reload(); 
+            }
         }
 
         function checkAdminAndOpen() {
-            if (prompt("🔐 管理員密碼：") === ADMIN_PASSWORD) { renderSettingsList(); document.getElementById('settingsModal').style.display = "block"; }
+            if (prompt("🔐 管理員密碼：") === ADMIN_PASSWORD) { 
+                renderSettingsList(); 
+                document.getElementById('settingsModal').style.display = "block"; 
+            }
             else alert("密碼錯誤");
         }
 
@@ -403,4 +424,3 @@
     </script>
 </body>
 </html>
-
