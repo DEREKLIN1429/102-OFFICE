@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>部門應用程式網站 V1.0 (Departmental Application Index v1.0)</title>
+    <title>102 部門應用程式網站 V2.0 (102 Departmental Application Index v2.0)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
-        /* ---------------------------------- */
         /* 1. 基本設定 */
-        /* ---------------------------------- */
         body {
             background-color: #A9A9A9; 
             display: flex;
@@ -31,9 +29,7 @@
         h1 { color: #333; margin: 0; font-size: 24px; text-shadow: 1px 1px 2px rgba(255,255,255,0.3); }
         .subheader { color: #444; font-size: 14px; margin-top: 5px; font-weight: bold; }
 
-        /* ---------------------------------- */
         /* 2. 分組容器與標題 */
-        /* ---------------------------------- */
         .group-container {
             width: 100%;
             max-width: 720px; 
@@ -60,9 +56,7 @@
             padding: 0 5px;
         }
 
-        /* ---------------------------------- */
         /* 3. 按鈕樣式 (依顏色分組) */
-        /* ---------------------------------- */
         .btn-style {
             width: calc((100% - 20px) / 3); 
             height: 120px; 
@@ -119,9 +113,7 @@
             .lock-indicator { top: 10px; right: 10px; font-size: 16px; }
         }
 
-        /* ---------------------------------- */
         /* 4. 後台管理 Modal */
-        /* ---------------------------------- */
         #settings-btn {
             position: fixed; bottom: 20px; right: 20px;
             width: 50px; height: 50px; border-radius: 50%;
@@ -185,8 +177,8 @@
 <body>
 
     <div class="header-container">
-        <h1>🏢 部門應用程式索引 V1.0</h1>
-        <div class="subheader">Departmental Application Index v1.0</div>
+        <h1>🏢 102 部門應用程式索引 V2.0</h1>
+        <div class="subheader">102 Departmental Application Index v2.0</div>
     </div>
 
     <div id="main-container"></div>
@@ -233,7 +225,7 @@
 
     <script>
         const ADMIN_PASSWORD = "88888888"; 
-        const STORAGE_KEY = 'departmentalAppButtonsV15_Admin'; // 更新版本號
+        const STORAGE_KEY = 'departmentalAppButtonsV15_Admin'; 
 
         const defaultData = [
             {
@@ -252,8 +244,7 @@
                     { en: "Extrusion Inventory", cn: "押出盤點", url: "https://dereklin1429.github.io/derekexInventory02/", icon: "fa-layer-group" },
                     { en: "Calendering Inventory", cn: "上膠盤點", url: "https://dereklin1429.github.io/derekclInventory02/", icon: "fa-scroll" },
                     { en: "CUTTING Inventory", cn: "裁斷盤點", url: "https://dereklin1429.github.io/derekctInventory02/", icon: "fa-cut" },
-                    { en: "RW WH Inventory", cn: "原物料倉庫", url: "https://dereklin1429.github.io/derekrmwnInventory01/", icon: "fa-warehouse" },
-                    { en: "PONE QR Code", cn: "QRCode 生成", url: "https://dereklin1429.github.io/derekqrcoed01/", icon: "fa-qrcode" }
+                    { en: "RW WH Inventory", cn: "原物料倉庫", url: "https://dereklin1429.github.io/derekrmwnInventory01/", icon: "fa-warehouse" }
                 ]
             },
             {
@@ -287,7 +278,9 @@
                 items: [
                     { en: "Mixing schedule", cn: "混練生產排程系統", url: "https://dereklin1429.github.io/MAXXIS-Production-Dashboard-V2.0/", icon: "fa-calendar-alt" },
                     { en: "Car Live Status", cn: "車輛動態管理", url: "https://dereklin1429.github.io/Intelligent-Container-Logistics-Dashboard-v6/", icon: "fa-chart-line" },
-                    { en: "Procurement List", cn: "採購清單彙整", url: "https://dereklin1429.github.io/Procurement-List-03/", icon: "fa-file-invoice-dollar" }
+                    { en: "Procurement List", cn: "採購清單彙整", url: "https://dereklin1429.github.io/Procurement-List-03/", icon: "fa-file-invoice-dollar" },
+                    { en: "AOT Schedule", cn: "AOT 計畫表", url: "https://dereklin1429.github.io/derekaotv03/", icon: "fa-project-diagram" },
+                    { en: "PONE QR Code", cn: "QRCode 生成", url: "https://dereklin1429.github.io/derekqrcoed01/", icon: "fa-qrcode" }
                 ]
             }
         ];
@@ -393,7 +386,6 @@
             });
             saveData(); renderMain(); renderSettingsList();
             
-            // 清空輸入框
             document.getElementById('new-en').value = '';
             document.getElementById('new-cn').value = '';
             document.getElementById('new-url').value = '';
@@ -424,7 +416,3 @@
     </script>
 </body>
 </html>
-
-
-
-
