@@ -113,7 +113,7 @@
             .lock-indicator { top: 10px; right: 10px; font-size: 16px; }
         }
 
-        /* 4. 後台管理 Modal */
+        /* 4. 後台管理與懸浮按鈕 Modal */
         #settings-btn {
             position: fixed; bottom: 20px; right: 20px;
             width: 50px; height: 50px; border-radius: 50%;
@@ -122,6 +122,29 @@
             font-size: 24px; cursor: pointer; transition: transform 0.2s;
         }
         #settings-btn:hover { transform: scale(1.1); }
+
+        /* 新增：清除資料按鈕樣式 */
+        #clear-data-btn {
+            position: fixed; 
+            bottom: 20px; 
+            left: 20px; /* 固定在左下角 */
+            height: 50px; 
+            border-radius: 25px; /* 膠囊形狀 */
+            background-color: #f44336; /* 紅色警告色 */
+            color: white; 
+            border: 2px solid #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4); 
+            z-index: 100;
+            font-size: 14px; 
+            font-weight: bold;
+            cursor: pointer; 
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* 圖示與文字的間距 */
+            transition: transform 0.2s;
+        }
+        #clear-data-btn:hover { transform: scale(1.05); }
 
         .modal {
             display: none; position: fixed; z-index: 101;
@@ -181,10 +204,19 @@
         <div class="subheader">102 Departmental Application Index v2.1</div>
     </div>
 
+    <div style="width: 100%; max-width: 720px; margin-bottom: 15px; padding: 0 5px; box-sizing: border-box;">
+        <input type="text" id="searchInput" placeholder="🔍 搜尋應用程式名稱 (中/英文)..." 
+               style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 16px; box-sizing: border-box;">
+    </div>
+
     <div id="main-container"></div>
     
     <button id="settings-btn" onclick="checkAdminAndOpen()">
         <i class="fas fa-cog"></i>
+    </button>
+
+    <button id="clear-data-btn" onclick="clearLocalData()">
+        <i class="fas fa-trash-restore"></i> 清除快取
     </button>
     
     <div id="settingsModal" class="modal">
@@ -414,11 +446,42 @@
         function closeModal() { document.getElementById('settingsModal').style.display = "none"; }
         window.onclick = (e) => { if(e.target == document.getElementById('settingsModal')) closeModal(); }
 
+        // 新增：清除 LocalStorage 資料並刷新網頁的功能
+        function clearLocalData() {
+            const confirmClear = confirm("⚠️ 確定要清除手機上儲存的網站資料嗎？\n\n這將會刪除您自定義的設定，並重新載入最新的網頁程式。");
+            
+            if (confirmClear) {
+                localStorage.removeItem(STORAGE_KEY); 
+                alert("✅ 資料已清除！網頁即將重新載入...");
+                location.reload(); 
+            }
+        }
+
+        // 新增：搜尋功能事件監聽器
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const keyword = e.target.value.toLowerCase();
+            const links = document.querySelectorAll('.btn-style');
+            
+            links.forEach(link => {
+                const text = link.querySelector('.btn-text').innerText.toLowerCase();
+                if (text.includes(keyword)) {
+                    link.style.display = 'flex';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+
+            document.querySelectorAll('.group-container').forEach(group => {
+                const visibleLinks = group.querySelectorAll('.btn-style[style="display: flex;"], .btn-style:not([style*="display: none"])');
+                if (visibleLinks.length === 0) {
+                    group.style.display = 'none';
+                } else {
+                    group.style.display = 'block';
+                }
+            });
+        });
+
         loadData();
     </script>
 </body>
 </html>
-
-
-
-
